@@ -1,1 +1,190 @@
 /* You can add global styles to this file, and also import other style files */
+.back-place {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e9e9e9;
+}
+
+.form-body {
+  position: relative;
+  background: #fff;
+  box-shadow: 0px 0px 18.0727px rgb(0 0 0 / 20%);
+  border-radius: 12px;
+  width: 90%;
+  max-width: 300px;
+  overflow: hidden;
+  padding: 35px 35px;
+
+  .form-block {
+    margin-bottom: 10px;
+    .form-item {
+      width: 100%;
+      margin-bottom: 8px;
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      input, textarea {
+        transition: all 0.3s ease 0s;
+      }
+      input:focus {
+        box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
+      }
+      textarea:focus {
+        box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
+      }
+      .form-body__phone {
+        background: #F4F4F4;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: none;
+        outline: none;
+        border-radius: 12px;
+      }
+      .form-body__phone._error {
+        border: 0.5px solid red;
+      }
+      .form-body__name._error {
+        border: 0.5px solid red;
+      }
+
+      .form-body__name {
+        background: #F4F4F4;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: none;
+        outline: none;
+        border-radius: 12px;
+      }
+
+      .form-body__text {
+        background: #F4F4F4;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 12px;
+        border-radius: 12px;
+        outline: none;
+        resize: vertical;
+        min-height: 60px;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+          height: 12px;
+          width: 12px;
+        }
+        &::-webkit-scrollbar-track,
+        &::-webkit-scrollbar-track {
+          background:#F4F4F4;
+        }
+        &::-webkit-scrollbar-thumb,
+        &::-webkit-scrollbar-thumb {
+          background-color: #5178AC;
+          border-radius: 10px;
+          border: 3px solid #F4F4F4;
+        }
+      }
+      .checkbox._error .label__checkbox::before {
+        border: 0.5px solid red;
+      }
+      .checkbox {
+        a {
+          font-size: 11px;
+          line-height: 100%;
+          text-decoration: underline;
+          color: #5178AC;
+          margin-left: 5px;
+        }
+        .form-body__agreement {
+          display: none;
+        }
+        .form-body__agreement:checked + .label__checkbox::after {
+          transform: scale(1);
+        }
+        .form-body__agreement:checked + .label__checkbox::before {
+          box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
+        }
+        .label__checkbox {
+          font-size: 11px;
+          line-height: 100%;
+          display: inline-flex;
+          align-items: center;
+          position: relative;
+          cursor: pointer;
+        }
+        .label__checkbox::before {
+          content: '';
+          align-self: flex-start;
+          flex: 0 0 14px;
+          height: 14px;
+          background-color: #F4F4F4;
+          border-radius: 50%;
+          margin: 3px 10px 0px 0px;
+        }
+        .label__checkbox::after {
+          content: '';
+          width: 8px;
+          height: 8px;
+          position: absolute;
+          top: 6px;
+          left: 3px;
+          background-color: #5178AC;
+          border-radius: 50%;
+          transform: scale(0);
+          transition: transform 0.3s ease 0s;
+        }
+      }
+    }
+  }
+
+  &__btn {
+    width: 100%;
+    background: #5178AC;
+    border: 1px solid #CACACA;
+    color: #fff;
+    height: 35px;
+    border-radius: 12px;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    &:hover {
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+      background: #6a94cc;
+    }
+  }
+
+  .redirects-block {
+    margin-top: 25px;
+    font-size: 12px;
+    .forgotPassword {
+      font-size: 11px;
+      line-height: 100%;
+      text-decoration: underline;
+      color: #5178AC;
+      margin-bottom: 10px;
+      transition: 0.3s;
+      cursor: pointer;
+      &:hover {
+        color: #185fac;
+      }
+    }
+    .redirectToLogin {
+      .redirect {
+        font-size: 11px;
+        line-height: 100%;
+        text-decoration: underline;
+        color: #5178AC;
+        margin-left: 5px;
+        transition: 0.3s;
+        cursor: pointer;
+        &:hover {
+          color: #185fac;
+        }
+      }
+    }
+  }
+}

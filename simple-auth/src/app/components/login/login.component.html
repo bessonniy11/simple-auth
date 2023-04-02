@@ -1,1 +1,55 @@
-<p>login works!</p>
+<div class="back-place">
+
+  <div class="form form-body">
+
+    <div class="form-block">
+
+      <div class="form-item">
+        <label for="formEmail">Email*</label>
+        <input #userName id="formEmail" type="text" name="name" class="form-body__name _req" required>
+      </div>
+
+      <div class="form-item">
+        <label for="formPassword">Password*</label>
+        <input #userPassword id="formPassword" type="password" name="password" class="form-body__phone _req" required>
+      </div>
+
+<!--      этот блок пока ни на что не влияет, но может пригодиться на будущее-->
+      <div class="form-item">
+        <div class="checkbox">
+          <input id="formAgreement" checked type="checkbox" name="agreement" class="form-body__agreement _req">
+          <label for="formAgreement" class="label__checkbox">
+            <span>Я даю согласие на обработку моих персональных данных <a  class="popup-link">Подробнее*</a></span>
+          </label>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="form-body__btn" type="submit">
+      Отправить
+    </button>
+
+    <div class="redirects-block">
+
+      <div class="forgotPassword">
+        <span routerLink="/forgot-password">Забыли пароль?</span>
+      </div>
+
+      <div class="redirectToLogin">
+      <span>Ещё нет аккаунта?
+        <span class="redirect" routerLink="/register">
+        Зарегистрироваться
+        </span>
+      </span>
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+
+</div>
+
