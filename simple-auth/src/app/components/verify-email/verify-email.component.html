@@ -1,1 +1,35 @@
-<p>verify-email works!</p>
+<div class="back-place">
+
+  <div class="form form-body">
+
+    <div class="form-title" *ngIf="authService.userData as user">Спасибо за регистрацию</div>
+
+    <div class="form-subtitle" *ngIf="authService.userData as user">
+      <p>Мы отправили подтверждение по электронной почте на адрес <strong>{{user.email}}</strong>.</p>
+      <p>Пожалуйста, проверьте свою электронную почту и нажмите на ссылку для проверки адреса электронной почты.</p>
+    </div>
+
+    <div class="form-subtitle" *ngIf="!authService.userData as user">
+      <p>Похоже на то, что вы оказались здесь случайно</p>
+    </div>
+
+    <button class="form-body__btn" *ngIf="authService.userData as user" (click)="authService.SendVerificationMail()">
+      Отправить повторно?
+    </button>
+
+    <div class="redirects-block">
+
+      <div class="redirectToLogin">
+      <span>Вернуться?
+        <span class="redirect" routerLink="/register">
+        Зарегистрироваться
+        </span>
+      </span>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+

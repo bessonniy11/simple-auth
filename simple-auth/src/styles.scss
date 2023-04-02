@@ -18,6 +18,18 @@
   overflow: hidden;
   padding: 35px 35px;
 
+  .form-title {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+
+  .form-subtitle {
+    text-align: center;
+    line-height: 17px;
+    margin-bottom: 15px;
+  }
+
   .form-block {
     margin-bottom: 10px;
     .form-item {
@@ -160,7 +172,7 @@
   .redirects-block {
     margin-top: 25px;
     font-size: 12px;
-    .forgotPassword {
+    .alternative-auth {
       font-size: 11px;
       line-height: 100%;
       text-decoration: underline;

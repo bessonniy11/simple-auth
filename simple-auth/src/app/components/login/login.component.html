@@ -2,6 +2,8 @@
 
   <div class="form form-body">
 
+    <div class="form-title">Войти в аккаунт</div>
+
     <div class="form-block">
 
       <div class="form-item">
@@ -27,17 +29,17 @@
     </div>
 
     <button class="form-body__btn" (click)="authService.SignIn(userName.value, userPassword.value)">
-      Отправить
+      Войти
     </button>
 
     <div class="redirects-block">
 
-      <div class="forgotPassword" (click)="authService.GoogleAuth()">
+      <div class="alternative-auth" (click)="authService.GoogleAuth()">
         <img src="https://cdn-icons-png.flaticon.com/512/1240/1240979.png" alt="">
         <span>Войти с помощью Google</span>
       </div>
 
-      <div class="forgotPassword">
+      <div class="alternative-auth">
         <img src="https://cdn-icons-png.flaticon.com/512/8224/8224722.png" alt="">
         <span routerLink="/forgot-password">Забыли пароль?</span>
       </div>

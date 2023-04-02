@@ -31,11 +31,14 @@ export class AuthService {
   }
   // Sign in with email/password
   SignIn(email: string, password: string) {
+    console.log('SignIn');
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
+        console.log('result', result);
         this.SetUserData(result.user);
         this.afAuth.authState.subscribe((user) => {
+          console.log('user', user);
           if (user) {
             this.router.navigate(['dashboard']);
           }
@@ -64,7 +67,7 @@ export class AuthService {
     return this.afAuth.currentUser
       .then((u: any) => u.sendEmailVerification())
       .then(() => {
-        this.router.navigate(['verify-email-address']);
+        this.router.navigate(['verify-email']);
       });
   }
   // Reset Forggot password
@@ -86,6 +89,7 @@ export class AuthService {
   // Sign in with Google
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
+      console.log('res', res);
       this.router.navigate(['dashboard']);
     });
   }
@@ -123,7 +127,7 @@ export class AuthService {
   SignOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['sign-in']);
+      this.router.navigate(['login']);
     });
   }
 }

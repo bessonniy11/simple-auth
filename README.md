@@ -25,5 +25,9 @@
     ng g i shared/services/user
     ng g s shared/services/auth
 
-6. Создание
+6. Создание остальной логики аутентификации
+
+7. Вёрстка
+
+. Тесты
 
