@@ -21,4 +21,9 @@
 
 4. Создание маршрутизации.
 
+5. Создание службы аутентификации Firebase
+    ng g i shared/services/user
+    ng g s shared/services/auth
+
+6. Создание
 

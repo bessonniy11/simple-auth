@@ -165,11 +165,18 @@
       line-height: 100%;
       text-decoration: underline;
       color: #5178AC;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       transition: 0.3s;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      img {
+        height: 15px;
+        width: 15px;
+        margin-right: 10px;
+      }
       &:hover {
-        color: #185fac;
+        color: #17478b;
       }
     }
     .redirectToLogin {
@@ -182,7 +189,7 @@
         transition: 0.3s;
         cursor: pointer;
         &:hover {
-          color: #185fac;
+          color: #17478b;
         }
       }
     }
