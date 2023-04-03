@@ -163,6 +163,9 @@
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease 0s;
+    &:disabled {
+      opacity: 0.5;
+    }
     &:hover {
       box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
       background: #6a94cc;

@@ -11,4 +11,12 @@ export class RegisterComponent implements OnInit {
     public authService: AuthService
 ) { }
   ngOnInit() { }
+
+  checkUserEmailInput(userEmail: HTMLInputElement) {
+    
+  }
+
+  checkUserPwdInput(userPwd: HTMLInputElement) {
+    
+  }
 }

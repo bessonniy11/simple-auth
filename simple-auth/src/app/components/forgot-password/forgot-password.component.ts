@@ -12,4 +12,8 @@ export class ForgotPasswordComponent implements OnInit {
   ) { }
   ngOnInit() {
   }
+
+  checkPasswordResetEmailInput(passwordResetEmail: HTMLInputElement) {
+
+  }
 }

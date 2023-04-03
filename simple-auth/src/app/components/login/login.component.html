@@ -8,12 +8,27 @@
 
       <div class="form-item">
         <label for="formEmail">Email*</label>
-        <input #userName id="formEmail" type="text" name="name" class="form-body__name _req" required>
+        <input
+            #userName
+            id="formEmail"
+            type="text"
+            name="name"
+            class="form-body__name _req"
+            (input)="checkUsernameInput(userName)"
+            required>
+        <span *ngIf="userName.oninvalid" style="color: red">введите верный емейл</span>
       </div>
 
       <div class="form-item">
         <label for="formPassword">Password*</label>
-        <input #userPassword id="formPassword" type="password" name="password" class="form-body__phone _req" required>
+        <input
+            #userPassword
+            id="formPassword"
+            type="password"
+            name="password"
+            class="form-body__phone _req"
+            (input)="checkPasswordInput(userPassword.value)"
+            required>
       </div>
 
 <!--      этот блок пока ни на что не влияет, но может пригодиться на будущее-->
@@ -28,7 +43,11 @@
 
     </div>
 
-    <button class="form-body__btn" (click)="authService.SignIn(userName.value, userPassword.value)">
+    <button
+      class="form-body__btn"
+      (click)="authService.SignIn(userName.value, userPassword.value)"
+      [disabled]="!userName.value.length || !userPassword.value.length"
+    >
       Войти
     </button>
 

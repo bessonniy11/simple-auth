@@ -1,27 +1,40 @@
-# SimpleAuth
+# simple-auth
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.2.
+0. Создание проекта в https://console.firebase.google.com/
 
-## Development server
+1. Ининциализация проекта.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+2. Установка firebase: npm install firebase @angular/fire
 
-## Code scaffolding
+    Импорт нужных файлов в app.module.ts
+    Добавление конфигурации firebase в файлы environments.ts .
+    Если tsconfig слишком строгий - можно добавить "skipLibCheck": true,
+    чтобы run постоянно не ругался
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+3. Создание необходимых компонентов.
 
-## Build
+    ng g c components/dashboard
+    ng g c components/login
+    ng g c components/register
+    ng g c components/forgot-password
+    ng g c components/verify-email
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+4. Создание маршрутизации.
 
-## Running unit tests
+5. Создание службы аутентификации Firebase
+    ng g i shared/services/user
+    ng g s shared/services/auth
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+6. Создание остальной логики аутентификации
 
-## Running end-to-end tests
+7. Вёрстка
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+8. Тесты
 
-## Further help
+9. ToDo: добавить валидацию полей, блокировку кнопок
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+10. ToDo: добавить обрабочик ошибок и вывод их в toasts
+
+11. ToDo: добавить таймаут для воосстановления пароля
+
+12. ToDo: исправить логику входа через гугл (пока вход срабатывает со второго раза)

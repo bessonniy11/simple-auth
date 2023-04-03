@@ -8,12 +8,26 @@
 
       <div class="form-item">
         <label for="formEmail">Email*</label>
-        <input #userEmail id="formEmail" type="text" name="name" class="form-body__name _req" required>
+        <input
+            #userEmail
+            id="formEmail"
+            type="text"
+            name="name"
+            class="form-body__name _req"
+            (input)="checkUserEmailInput(userEmail)"
+            required>
       </div>
 
       <div class="form-item">
         <label for="formPassword">Password*</label>
-        <input #userPwd id="formPassword" type="password" name="password" class="form-body__phone _req" required>
+        <input
+            #userPwd
+            id="formPassword"
+            type="password"
+            name="password"
+            class="form-body__phone _req"
+            (input)="checkUserPwdInput(userPwd)"
+            required>
       </div>
 
       <!--      этот блок пока ни на что не влияет, но может пригодиться на будущее-->
@@ -28,7 +42,11 @@
 
     </div>
 
-    <button class="form-body__btn" (click)="authService.SignUp(userEmail.value, userPwd.value)">
+    <button
+      class="form-body__btn"
+      (click)="authService.SignUp(userEmail.value, userPwd.value)"
+      [disabled]="!userEmail.value.length || !userPwd.value.length"
+    >
       Зарегистрироваться
     </button>
 
