@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {AuthService} from "../../shared/services/auth.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {NavigationService} from "../../shared/services/navigation.service";
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
+    private navigationService: NavigationService,
   ) {
     this.loginForm.valueChanges.subscribe((val) => {
       console.log('val', val);
@@ -34,6 +36,6 @@ export class LoginComponent implements OnInit {
   }
 
   goToUrl(link: string) {
-
+    this.navigationService.goToUrl(link);
   }
 }
