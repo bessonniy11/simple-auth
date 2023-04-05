@@ -18,6 +18,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import {AuthService} from "./shared/services/auth.service";
 import {ReactiveFormsModule} from "@angular/forms";
+import {ComponentsModule} from "./components/ui/app.module";
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     ReactiveFormsModule,
+    ComponentsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

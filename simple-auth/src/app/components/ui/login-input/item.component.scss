@@ -1,0 +1,83 @@
+.form-item {
+  width: 100%;
+  margin-bottom: 8px;
+  position: relative;
+  .required {
+    color: #FE283E;
+  }
+  .text-error {
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    line-height: 12px;
+    font-size: 10px;
+    color: #FE283E;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  input, textarea {
+    transition: all 0.3s ease 0s;
+  }
+  input:focus {
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
+  }
+  textarea:focus {
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
+  }
+  .form-input {
+    background: #F4F4F4;
+    width: 100%;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 10px;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    &.password {
+      padding: 10px 40px 10px 10px;
+    }
+
+    &.error {
+      outline: 0.5px solid #FE283E;
+    }
+
+    &.valid {
+      outline: 0.5px solid #4CD964;
+    }
+  }
+
+
+  .form-textarea {
+    background: #F4F4F4;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    outline: none;
+    resize: vertical;
+    min-height: 60px;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      height: 12px;
+      width: 12px;
+    }
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-track {
+      background:#F4F4F4;
+    }
+    &::-webkit-scrollbar-thumb,
+    &::-webkit-scrollbar-thumb {
+      background-color: #5178AC;
+      border-radius: 10px;
+      border: 3px solid #F4F4F4;
+    }
+  }
+
+  .fa {
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    bottom: 24px;
+  }
+}

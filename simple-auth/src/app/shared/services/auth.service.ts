@@ -30,7 +30,7 @@ export class AuthService {
     });
   }
   // Sign in with email/password
-  SignIn(email: string, password: string) {
+  SignIn(email: any, password: any) {
     console.log('SignIn');
     return this.afAuth
       .signInWithEmailAndPassword(email, password)

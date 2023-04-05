@@ -1,0 +1,31 @@
+<div class="form-item">
+
+  <label [for]="inputId">
+    {{label}} <span *ngIf="required" class="required">*</span>
+    <input
+        [id]="inputId"
+        [type]="type"
+        name="name"
+        [formControl]="control"
+        class="form-input"
+        [ngClass]="{
+        'password': password,
+        'error': control.invalid && control.dirty && control.touched,
+        'valid': control.valid && control.dirty && control.touched
+        }"
+        required>
+  </label>
+
+  <span *ngIf="password"
+        (click)="hideShowPass()"
+        class="fa {{type === 'password' ? 'fa-eye-slash' : 'fa-eye'}}"
+  >
+  </span>
+
+  <ng-container *ngIf="control.invalid && control.dirty && control.touched">
+    <div class="text-error" *ngFor="let err of control.errors | keyvalue">
+      {{ errorMessages[err.key] }}
+    </div>
+  </ng-container>
+
+</div>

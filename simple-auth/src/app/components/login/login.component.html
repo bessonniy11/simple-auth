@@ -6,61 +6,28 @@
 
     <form class="form-block" [formGroup]="loginForm">
 
-      <div class="form-item">
-        <label for="formEmail">Email*</label>
-        <input
-            #userName
-            id="formEmail"
-            type="text"
-            name="name"
-            formControlName="email"
-            class="form-body__name _req"
-            (input)="keyLogin()"
-            required>
-        <small
-          *ngIf="
-              !errorText?.length &&
-              loginForm.controls['password']?.value?.length &&
-              !loginForm.controls['email']?.value?.length"
-          class="text-danger">
-          {{'это обязательное поле'}}
-        </small>
+      <app-input
+        [control]="loginForm.controls['email']"
+        inputId="email"
+        label="Email"
+        [type]="'text'"
+        [required]="true"
+      ></app-input>
 
-        <small
-          class="text-danger">
-          {{errorText}}
-        </small>
-      </div>
-
-      <div class="form-item">
-        <label for="formPassword">Password*</label>
-        <input
-            #userPassword
-            id="formPassword"
-            type="password"
-            name="password"
-            formControlName="password"
-            class="form-body__phone _req"
-            (input)="checkPasswordInput(userPassword.value)"
-            required>
-        <span (click)="hideShowPass()" class="fa fa-eye-slash"></span>
-      </div>
-
-<!--      этот блок пока ни на что не влияет, но может пригодиться на будущее-->
-<!--      <div class="form-item">-->
-<!--        <div class="checkbox">-->
-<!--          <input id="formAgreement" checked type="checkbox" name="agreement" class="form-body__agreement _req">-->
-<!--          <label for="formAgreement" class="label__checkbox">-->
-<!--            <span>Я даю согласие на обработку моих персональных данных <a  class="popup-link">Подробнее*</a></span>-->
-<!--          </label>-->
-<!--        </div>-->
-<!--      </div>-->
+      <app-input
+        [control]="loginForm.controls['password']"
+        inputId="password"
+        label="Password"
+        [type]="'password'"
+        [password]="true"
+        [required]="true"
+      ></app-input>
 
     </form>
 
     <button
       class="form-body__btn"
-      (click)="authService.SignIn(userName.value, userPassword.value)"
+      (click)="login()"
       [disabled]="loginForm.invalid"
     >
       Войти
@@ -68,19 +35,19 @@
 
     <div class="redirects-block">
 
-      <div class="alternative-auth" (click)="authService.GoogleAuth()">
+      <div class="alternative-auth" (click)="loginWithGoogle()">
         <img src="https://cdn-icons-png.flaticon.com/512/1240/1240979.png" alt="">
         <span>Войти с помощью Google</span>
       </div>
 
-      <div class="alternative-auth">
+      <div class="alternative-auth" (click)="goToUrl('forgot-password')">
         <img src="https://cdn-icons-png.flaticon.com/512/8224/8224722.png" alt="">
-        <span routerLink="/forgot-password">Забыли пароль?</span>
+        <span>Забыли пароль?</span>
       </div>
 
-      <div class="redirectToLogin">
+      <div class="redirectToLogin" (click)="goToUrl('register')">
       <span>Ещё нет аккаунта?
-        <span class="redirect" routerLink="/register">
+        <span class="redirect">
         Зарегистрироваться
         </span>
       </span>
