@@ -19,6 +19,7 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import {AuthService} from "./shared/services/auth.service";
 import {ReactiveFormsModule} from "@angular/forms";
 import {ComponentsModule} from "./components/ui/app.module";
+import {IonicModule} from "@ionic/angular";
 
 @NgModule({
   declarations: [
@@ -32,6 +33,10 @@ import {ComponentsModule} from "./components/ui/app.module";
   imports: [
     BrowserModule,
     AppRoutingModule,
+    IonicModule.forRoot({
+      mode: 'md',
+      scrollAssist: false
+    }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,

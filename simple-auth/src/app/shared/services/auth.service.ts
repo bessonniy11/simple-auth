@@ -4,6 +4,7 @@ import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/compat/f
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {Router} from "@angular/router";
 import {User} from "./user";
+import {AppService} from "./app.service";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class AuthService {
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
-    public ngZone: NgZone // NgZone service to remove outside scope warning
+    public ngZone: NgZone, // NgZone service to remove outside scope warning
+    private appService: AppService,
   ) {
     /* Saving user data in localstorage when
     logged in and setting up null when logged out */
@@ -31,21 +33,18 @@ export class AuthService {
   }
   // Sign in with email/password
   SignIn(email: any, password: any) {
-    console.log('SignIn');
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
-        console.log('result', result);
         this.SetUserData(result.user);
         this.afAuth.authState.subscribe((user) => {
-          console.log('user', user);
           if (user) {
             this.router.navigate(['dashboard']);
           }
         });
       })
       .catch((error) => {
-        window.alert(error.message);
+        this.appService.showToast(error.message, 'danger');
       });
   }
   // Sign up with email/password
@@ -59,7 +58,7 @@ export class AuthService {
         this.SetUserData(result.user);
       })
       .catch((error) => {
-        window.alert(error.message);
+        this.appService.showToast(error.message, 'danger');
       });
   }
   // Send email verfificaiton when new user sign up
@@ -89,7 +88,6 @@ export class AuthService {
   // Sign in with Google
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
-      console.log('res', res);
       this.router.navigate(['dashboard']);
     });
   }
@@ -102,7 +100,7 @@ export class AuthService {
         this.SetUserData(result.user);
       })
       .catch((error) => {
-        window.alert(error);
+        this.appService.showToast(error.message, 'danger');
       });
   }
   /* Setting up user data when sign in with username/password,
