@@ -4,7 +4,7 @@
 
     <div class="form-title">Войти в аккаунт</div>
 
-    <div class="form-block">
+    <form class="form-block" [formGroup]="loginForm">
 
       <div class="form-item">
         <label for="formEmail">Email*</label>
@@ -13,10 +13,23 @@
             id="formEmail"
             type="text"
             name="name"
+            formControlName="email"
             class="form-body__name _req"
-            (input)="checkUsernameInput(userName)"
+            (input)="keyLogin()"
             required>
-        <span *ngIf="userName.oninvalid" style="color: red">введите верный емейл</span>
+        <small
+          *ngIf="
+              !errorText?.length &&
+              loginForm.controls['password']?.value?.length &&
+              !loginForm.controls['email']?.value?.length"
+          class="text-danger">
+          {{'это обязательное поле'}}
+        </small>
+
+        <small
+          class="text-danger">
+          {{errorText}}
+        </small>
       </div>
 
       <div class="form-item">
@@ -26,9 +39,11 @@
             id="formPassword"
             type="password"
             name="password"
+            formControlName="password"
             class="form-body__phone _req"
             (input)="checkPasswordInput(userPassword.value)"
             required>
+        <span (click)="hideShowPass()" class="fa fa-eye-slash"></span>
       </div>
 
 <!--      этот блок пока ни на что не влияет, но может пригодиться на будущее-->
@@ -41,12 +56,12 @@
 <!--        </div>-->
 <!--      </div>-->
 
-    </div>
+    </form>
 
     <button
       class="form-body__btn"
       (click)="authService.SignIn(userName.value, userPassword.value)"
-      [disabled]="!userName.value.length || !userPassword.value.length"
+      [disabled]="loginForm.invalid"
     >
       Войти
     </button>

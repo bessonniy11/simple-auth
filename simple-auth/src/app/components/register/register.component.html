@@ -30,6 +30,18 @@
             required>
       </div>
 
+      <div class="form-item">
+        <label for="formPassword">Password Confirm*</label>
+        <input
+            #userPwdConfirm
+            id="formPasswordConfirm"
+            type="password"
+            name="passwordConfirm"
+            class="form-body__phone _req"
+            (input)="checkUserPwdInput(userPwd)"
+            required>
+      </div>
+
       <!--      этот блок пока ни на что не влияет, но может пригодиться на будущее-->
       <!--      <div class="form-item">-->
       <!--        <div class="checkbox">-->
