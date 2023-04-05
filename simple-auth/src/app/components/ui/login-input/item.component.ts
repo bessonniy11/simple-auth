@@ -20,7 +20,6 @@ export class InputComponent implements OnInit {
   errorMessages: Record<string, string> = {
     required: "Это поле обязательное",
     email: "Проверьте емейл",
-    minlength: "Недостаточно надёжный пароль",
   };
 
   constructor(

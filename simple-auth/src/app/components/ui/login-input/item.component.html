@@ -3,17 +3,17 @@
   <label [for]="inputId">
     {{label}} <span *ngIf="required" class="required">*</span>
     <input
+        class="form-input"
+        [formControl]="control"
         [id]="inputId"
         [type]="type"
-        name="name"
-        [formControl]="control"
-        class="form-input"
+        [required]="required"
         [ngClass]="{
         'password': password,
         'error': control.invalid && control.dirty && control.touched,
         'valid': control.valid && control.dirty && control.touched
         }"
-        required>
+    >
   </label>
 
   <span *ngIf="password"

@@ -1,6 +1,6 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../shared/services/auth.service";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {NavigationService} from "../../shared/services/navigation.service";
 
 @Component({
@@ -12,16 +12,16 @@ export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.email, Validators.required]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    password: new FormControl('', [Validators.required]),
   });
 
   constructor(
     public authService: AuthService,
     private navigationService: NavigationService,
   ) {
-    this.loginForm.valueChanges.subscribe((val) => {
-      console.log('val', val);
-    });
+    // this.loginForm.valueChanges.subscribe((val) => {
+    //   console.log('val', val);
+    // });
   }
 
   ngOnInit() {
