@@ -23,6 +23,72 @@ ion-toast {
   }
 }
 
+.loading-container {
+  --background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  //transition: all ease-in-out 0.5s;
+
+  .loading-wrapper {
+    min-width: 100vw;
+    min-height: var(--app-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .loading-spinner-container {
+    ion-spinner {
+      display: inline-block;
+      position: relative;
+      width: 28px;
+      height: 28px;
+      color: #52ADDF;
+      user-select: none;
+      transform: scale(3) !important;
+    }
+    //.loading-spinner {
+    //  width: 20vw;
+    //  animation: spin 4s infinite linear;
+    //}
+  }
+}
+
+@-ms-keyframes spin {
+  from {
+    -ms-transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .body {
   height: 100vh;
   width: 100vw;

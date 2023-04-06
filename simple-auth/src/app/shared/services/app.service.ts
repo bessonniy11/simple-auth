@@ -65,14 +65,13 @@ export class AppService {
       this.loading = await this.loadingController.create({
         // message: '<ion-img class="loading-spinner" src="/assets/logo-img.svg" alt="loading..."></ion-img>',
         message: '<div class="loading-spinner-container">' +
-          '<ion-img class="loading-spinner" src="/assets/logo-img.svg" alt="loading...">' +
-          '</ion-img>' +
+          '<ion-spinner name="dots"></ion-spinner>' +
           '</div>',
         cssClass: 'loading-container',
         spinner: null,
         translucent: true,
         showBackdrop: false,
-        // animated: false
+        animated: true
       });
 
       await this.loading.present();

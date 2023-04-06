@@ -33,9 +33,11 @@ export class AuthService {
   }
   // Sign in with email/password
   SignIn(email: any, password: any) {
+    this.appService.showLoading();
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
+        this.appService.hideLoading();
         this.SetUserData(result.user);
         this.afAuth.authState.subscribe((user) => {
           if (user) {
@@ -44,40 +46,48 @@ export class AuthService {
         });
       })
       .catch((error) => {
+        this.appService.hideLoading();
         this.appService.showToast(error.message, 'danger');
       });
   }
   // Sign up with email/password
   SignUp(email: string, password: string) {
+    this.appService.showLoading();
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
+        this.appService.hideLoading();
         /* Call the SendVerificaitonMail() function when new user sign
         up and returns promise */
         this.SendVerificationMail();
         this.SetUserData(result.user);
       })
       .catch((error) => {
+        this.appService.hideLoading();
         this.appService.showToast(error.message, 'danger');
       });
   }
   // Send email verfificaiton when new user sign up
   SendVerificationMail() {
+    this.appService.showLoading();
     return this.afAuth.currentUser
       .then((u: any) => u.sendEmailVerification())
       .then(() => {
+        this.appService.hideLoading();
         this.router.navigate(['verify-email']);
       });
   }
   // Reset Forggot password
   ForgotPassword(passwordResetEmail: string) {
+    this.appService.showLoading();
     return this.afAuth
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
-        window.alert('Password reset email sent, check your inbox.');
+        this.appService.hideLoading();
+        this.appService.showToast('Письмо со сбросом пароля отправлено, проверьте свой почтовый ящик', 'danger');
       })
       .catch((error) => {
-        window.alert(error);
+        this.appService.showToast(error.message, 'danger');
       });
   }
   // Returns true when user is looged in and email is verified
@@ -87,19 +97,24 @@ export class AuthService {
   }
   // Sign in with Google
   GoogleAuth() {
+    this.appService.showLoading();
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
+      this.appService.hideLoading();
       this.router.navigate(['dashboard']);
     });
   }
   // Auth logic to run auth providers
   AuthLogin(provider: any) {
+    this.appService.showLoading();
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
+        this.appService.hideLoading();
         this.router.navigate(['dashboard']);
         this.SetUserData(result.user);
       })
       .catch((error) => {
+        this.appService.hideLoading();
         this.appService.showToast(error.message, 'danger');
       });
   }
@@ -123,7 +138,9 @@ export class AuthService {
   }
   // Sign out
   SignOut() {
-    return this.afAuth.signOut().then(() => {
+    this.appService.showLoading();
+    this.afAuth.signOut().then(() => {
+      this.appService.hideLoading();
       localStorage.removeItem('user');
       this.router.navigate(['login']);
     });
