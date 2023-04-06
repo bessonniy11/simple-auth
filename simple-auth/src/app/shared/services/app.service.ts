@@ -71,7 +71,7 @@ export class AppService {
         spinner: null,
         translucent: true,
         showBackdrop: false,
-        animated: true
+        animated: false
       });
 
       await this.loading.present();
