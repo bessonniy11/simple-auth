@@ -31,6 +31,13 @@ export class AuthService {
       }
     });
   }
+
+  checkUser(callback: any) {
+    this.afAuth.authState.subscribe((user) => {
+      user ? callback(true) : callback(false);
+    });
+  }
+
   // Sign in with email/password
   SignIn(email: any, password: any) {
     this.appService.showLoading();
@@ -105,16 +112,13 @@ export class AuthService {
   }
   // Auth logic to run auth providers
   AuthLogin(provider: any) {
-    this.appService.showLoading();
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
-        this.appService.hideLoading();
         this.router.navigate(['dashboard']);
         this.SetUserData(result.user);
       })
       .catch((error) => {
-        this.appService.hideLoading();
         this.appService.showToast(error.message, 'danger');
       });
   }
@@ -137,8 +141,8 @@ export class AuthService {
     });
   }
   // Sign out
-  SignOut() {
-    this.appService.showLoading();
+  async SignOut() {
+    await this.appService.showLoading();
     this.afAuth.signOut().then(() => {
       this.appService.hideLoading();
       localStorage.removeItem('user');
