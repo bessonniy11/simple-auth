@@ -4,43 +4,42 @@
 
     <div class="form-title">Регистрация</div>
 
-    <div class="form-block">
+    <form class="form-block" [formGroup]="registerForm">
 
-      <div class="form-item">
-        <label for="formEmail">Email*</label>
-        <input
-            #userEmail
-            id="formEmail"
-            type="text"
-            name="name"
-            class="form-body__name _req"
-            (input)="checkUserEmailInput(userEmail)"
-            required>
-      </div>
+      <app-input
+        [control]="registerForm.controls['email']"
+        inputId="email"
+        label="Email"
+        [type]="'text'"
+        [required]="true"
+      ></app-input>
 
-      <div class="form-item">
-        <label for="formPassword">Password*</label>
-        <input
-            #userPwd
-            id="formPassword"
-            type="password"
-            name="password"
-            class="form-body__phone _req"
-            (input)="checkUserPwdInput(userPwd)"
-            required>
-      </div>
+      <app-input
+        [control]="registerForm.controls['password']"
+        inputId="password"
+        label="Password"
+        [type]="'password'"
+        [password]="true"
+        [required]="true"
+      ></app-input>
 
-      <div class="form-item">
-        <label for="formPassword">Password Confirm*</label>
-        <input
-            #userPwdConfirm
-            id="formPasswordConfirm"
-            type="password"
-            name="passwordConfirm"
-            class="form-body__phone _req"
-            (input)="checkUserPwdInput(userPwd)"
-            required>
-      </div>
+      <app-input
+        [control]="registerForm.controls['passwordConfirm']"
+        inputId="password"
+        label="Password Confirm"
+        [type]="'password'"
+        [password]="true"
+        [required]="true"
+      ></app-input>
+
+      <span
+        *ngIf="registerForm.controls['passwordConfirm'].value !== registerForm.controls['password'].value
+              && registerForm.controls['password'].valid
+              && registerForm.controls['passwordConfirm'].valid"
+        class="passwords-error-message"
+      >
+        Пароли не совпадают
+      </span>
 
       <!--      этот блок пока ни на что не влияет, но может пригодиться на будущее-->
       <!--      <div class="form-item">-->
@@ -52,12 +51,13 @@
       <!--        </div>-->
       <!--      </div>-->
 
-    </div>
+    </form>
 
     <button
       class="form-body__btn"
-      (click)="authService.SignUp(userEmail.value, userPwd.value)"
-      [disabled]="!userEmail.value.length || !userPwd.value.length"
+      (click)="register()"
+      [disabled]="registerForm.invalid
+      || registerForm.controls['passwordConfirm'].value !== registerForm.controls['password'].value"
     >
       Зарегистрироваться
     </button>
@@ -71,7 +71,7 @@
 
       <div class="redirectToLogin">
       <span>Уже есть аккаунт?
-        <span class="redirect" routerLink="/login">
+        <span class="redirect" (click)="goToUrl('login')">
         Войти
         </span>
       </span>

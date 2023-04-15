@@ -16,7 +16,7 @@
     <div class="pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">Ваш профиль</h1>
     </div>
-    <main role="main" *ngIf="authService.userData as user">
+    <main role="main" *ngIf="authService.user as user">
       <div class="col-md-12">
         <div class="media">
           <img class="align-self-start mr-5 img-thumbnail" src="{{(user.photoURL) ? user.photoURL : '/assets/icons/profile_avatar.svg'}}"

@@ -122,6 +122,15 @@ ion-toast {
 
   .form-block {
     margin-bottom: 25px;
+    position: relative;
+    .passwords-error-message {
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      line-height: 12px;
+      font-size: 10px;
+      color: #FE283E;
+    }
   }
 
   &__btn {

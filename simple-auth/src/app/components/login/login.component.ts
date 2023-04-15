@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    private navigationService: NavigationService,
+    private navigationService: NavigationService
   ) {
     // this.loginForm.valueChanges.subscribe((val) => {
     //   console.log('val', val);

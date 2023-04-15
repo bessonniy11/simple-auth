@@ -155,7 +155,7 @@ export class AppService {
   async showToast(
     text: string = '',
     type: 'default' | 'primary' | 'success' | 'danger' = 'default',
-    duration = 2000   // to set to infinite: null or 0
+    duration = 5000   // to set to infinite: null or 0
   ) {
     const buttons = [
       {

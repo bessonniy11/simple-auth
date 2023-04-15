@@ -33,8 +33,14 @@ export class AppComponent {
   async initializeApp() {
     await this.onResize();
     await this.appService.showLoading();
-    await this.authService.checkUser((callback: any) => {});
-    this.appService.hideLoading();
+    await this.authService.checkUser((callback: boolean) => {
+      if (!callback) {
+        this.navigationService.goToUrl('login');
+      } else {
+        this.navigationService.goToUrl('dashboard');
+      }
+    });
+    await this.appService.hideLoading();
   }
 
   @HostListener('window:resize', ['$event'])
